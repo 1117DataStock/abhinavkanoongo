@@ -84,24 +84,19 @@
 
     .hero {
       height: 90vh;
-      min-height: 600px;          /* ← prevents it from becoming too small */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
       background: url('images/GameDevBackground.jpg') no-repeat center center / cover;
-      background-attachment: scroll;   /* fixed can cause issues on iOS mobile */
-      background-size: cover;
-      background-position: center;
-      color: #fff; 
+      color: #fff;
     }
-    @media (max-width: 480px) {
-      .hero {
-      height: 70vh;
-      min-height: 450px;
-      }
 
-      .hero h2 {
-        font-size: 3.5rem;
-        color: #e50914;
-        margin-bottom: 10px;
-      }
+    .hero h2 {
+      font-size: 3.5rem;
+      color: #e50914;
+      margin-bottom: 10px;
     }
 
     .hero p {
