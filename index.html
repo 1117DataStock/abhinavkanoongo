@@ -446,25 +446,46 @@ Whether it's strategizing on a football field or exploring new creative mechanic
     </form>
 
     <script>
-      document.getElementById("contactForm").addEventListener("submit", async function(e) {
-          e.preventDefault();
-      
-          const token = grecaptcha.getResponse();
-      
-          const data = {
-              name: document.getElementById("name").value,
-              email: document.getElementById("email").value,
-              message: document.getElementById("message").value,
-              recaptcha: token
-          };
-      
-          const res = await fetch("https://abhinavkanoongo.pythonanywhere.com/contact", {
-              method: "POST",
-              headers: {"Content-Type": "application/json"},
-              body: JSON.stringify(data)
-          });
-      
-          alert(await res.text());
+      document.getElementById("contactForm").addEventListener("submit", async function(e) 
+      { e.preventDefault();
+        const token = grecaptcha.getResponse();
+        if (!token) {
+            alert("Please complete the captcha!");
+            return;
+        }
+
+        const data = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+            recaptcha: token
+        };
+
+        try {
+            const res = await fetch("https://abhinavkanoongo.pythonanywhere.com/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await res.json();
+
+            console.log(result);
+
+            if (result.status === "success") {
+                alert("Message sent successfully ✅");
+                grecaptcha.reset();   // reset captcha
+                document.getElementById("contactForm").reset();
+            } else {
+                alert(result.error || "Something went wrong");
+            }
+
+            } catch (err) {
+                console.error(err);
+                alert("Server connection failed ❌");
+            }
       });
       </script>
   </section>
