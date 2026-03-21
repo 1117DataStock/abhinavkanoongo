@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abhinav Kanoongo | Unity Game Developer</title>
-  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="./images/favicon.png" type="image/png">
 
   <style>
     * {
@@ -368,7 +368,7 @@
         <li><a href="#bouncy-ball">Projects</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="javascript:void(0);" title="Hold to change smoke color"><div class="color-toggle-box"></div></a></li>
+        <li><a href="#" title="Hold to change smoke color"><div class="color-toggle-box"></div></a></li>
       </ul>
     </nav>
   </header>
@@ -462,22 +462,25 @@ Whether it's strategizing on a football field or exploring new creative mechanic
           message: document.getElementById("message").value,
           recaptcha: token
       };
-
-      const res = await fetch("https://abhinavkanoongo.pythonanywhere.com/contact", {
-          method: "POST",
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify(data)
-      });
-
-      const result = await res.json();
-
-      if (result.status === "success") {
-          alert("Message sent successfully ✅");
-          grecaptcha.reset(); // 🔥 important
-          } else {
-              alert("Error: " + result.error);
-              grecaptcha.reset();
+      try {
+          const res = await fetch("https://abhinavkanoongo.pythonanywhere.com/contact", {
+              method: "POST",
+              headers: {"Content-Type": "application/json"},
+              body: JSON.stringify(data)
+          });
+          if (!res.ok) {
+              throw new Error("Server error");
           }
+          const result = await res.json();
+          if (result.status === "success") {
+              alert("Message sent successfully ✅");
+            } else {
+                alert("Error: " + result.error);
+            }
+          } catch (err) {
+              alert("Server connection failed ⚠️");
+          }
+          grecaptcha.reset();
       });
       </script>
   </section>
