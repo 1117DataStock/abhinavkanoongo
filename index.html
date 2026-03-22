@@ -342,9 +342,6 @@
       .about-text, .about-image {
         flex: 1 1 100%;
       }
-      .project-section{
-        height: 500px;
-      }
     }
 
     .smoke {
@@ -420,15 +417,19 @@
         max-width: 600px;
       }
     }
-    @media(max-width: 1400px){
+    @media (max-width: 1400px) and (min-width: 768px) {
       .project-section{
-        height: 700px;
+        height: 600px;
+      }
+    }
+    @media (max-width: 768px) and (min-width: 600px){
+      .project-section{
+        height: 500px;
       }
     }
   </style>
 </head>
 <body>
-
   <header>
     <div class="header-left">
       <div class="logo-img"></div>
