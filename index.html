@@ -218,6 +218,12 @@
       text-align: center;
     }
 
+    .project-description {
+      font-size: 1.1rem;
+      max-width: 900px;
+      line-height: 1.6;
+    }
+
     .bg-video {
       position: absolute;
       top: 0;
@@ -336,6 +342,9 @@
       .about-text, .about-image {
         flex: 1 1 100%;
       }
+      .project-section{
+        height: 500px;
+      }
     }
 
     .smoke {
@@ -388,10 +397,6 @@
       nav ul{
         gap:10px;
       }
-      .overlay {
-        padding: 15px;
-        max-width: 300px;
-      }
       .hero h2 {
         font-size: 1.5rem;
       }
@@ -405,6 +410,19 @@
       .project-btn {
         padding: 6px 18px;
         font-size: 0.8rem;
+        min-width: 200px;
+      }
+      .project-section{
+        height: 300px;
+      }
+      .project-description {
+        font-size: 0.8rem;
+        max-width: 600px;
+      }
+    }
+    @media(max-width: 1400px){
+      .project-section{
+        height: 700px;
       }
     }
   </style>
@@ -461,7 +479,7 @@ Whether it's strategizing on a football field or exploring new creative mechanic
     </video>
     <div class="overlay">
       <button class="project-btn" onclick="window.open('https://github.com/1117DataStock/Slimy-Spaceship-2D', '_blank')">BOUNCY BALL 3D REBORN</button>
-      <p>Fantasy‑themed reimagining of the classic game. Features immersive visuals, enemy obstacles, and a story‑driven progression.</p>
+      <p class="project-description">Fantasy‑themed reimagining of the classic game. Features immersive visuals, enemy obstacles, and a story‑driven progression.</p>
     </div>
   </section>
 
@@ -471,7 +489,7 @@ Whether it's strategizing on a football field or exploring new creative mechanic
     </video>
     <div class="overlay">
       <button class="project-btn" onclick="window.open('https://github.com/1117DataStock/Slimy-Spaceship-2D', '_blank')">SLIMY SPACESHIP 2D</button>
-      <p>Endless survival space game with tight controls, collision animations, and responsive scoring UI.</p>
+      <p class="project-description">Endless survival space game with tight controls, collision animations, and responsive scoring UI.</p>
     </div>
   </section>
 
@@ -481,7 +499,7 @@ Whether it's strategizing on a football field or exploring new creative mechanic
     </video>
     <div class="overlay">
       <button class="project-btn" onclick="window.open('https://github.com/1117DataStock/Slimy-Spaceship-2D', '_blank')">VR MUSEUM TOUR</button>
-      <p>Interactive virtual museum experience using VR with detailed artifacts and smooth guided tour system.</p>
+      <p class="project-description">Interactive virtual museum experience using VR with detailed artifacts and smooth guided tour system.</p>
     </div>
   </section>
   </section>
